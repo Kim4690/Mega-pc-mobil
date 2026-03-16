@@ -6,7 +6,83 @@ var clickUrl = "https://www.bygtek.dk";
 
 var screenWidth = window.innerWidth;
 
+var bannerWidth;(function () {
+
+var clickUrl = "https://www.bygtek.dk";
+
+var banner;
+
+function createBanner(){
+
+if(banner){
+banner.remove();
+}
+
+var screenWidth = window.innerWidth;
+
 var bannerWidth;
+var bannerHeight;
+
+/* VÆLG FORMAT */
+
+if(screenWidth < 700){
+
+bannerWidth = 300;
+bannerHeight = 250;
+
+}else{
+
+bannerWidth = "100%";
+bannerHeight = 600;
+
+}
+
+/* OPRET BANNER */
+
+banner = document.createElement("div");
+
+banner.style.width = bannerWidth;
+banner.style.maxWidth = "1920px";
+banner.style.height = bannerHeight + "px";
+banner.style.margin = "0 auto";
+banner.style.position = "relative";
+banner.style.overflow = "hidden";
+banner.style.cursor = "pointer";
+
+document.currentScript.parentNode.appendChild(banner);
+
+banner.onclick = function(){
+window.open(clickUrl,"_blank");
+};
+
+/* BAGGRUNDSBILLEDE */
+
+var img = document.createElement("img");
+
+img.src = "https://kim4690.github.io/Mega-pc-mobil/banner.jpg";
+
+img.style.width = "100%";
+img.style.height = "100%";
+img.style.objectFit = "cover";
+img.style.position = "absolute";
+
+banner.appendChild(img);
+
+}
+
+/* OPRET BANNER */
+
+createBanner();
+
+/* OPDATER HVIS SKÆRM ÆNDRES */
+
+window.addEventListener("resize", function(){
+
+createBanner();
+
+});
+
+})();
 var bannerHeight;
 
 if(screenWidth < 700){
